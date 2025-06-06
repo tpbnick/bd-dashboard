@@ -38,11 +38,8 @@ function App() {
 					<main className="flex-1 p-6 overflow-auto">
 						<Routes>
 							<Route path="/" element={<Dashboard />} />
-							<Route
-								path="/analytics"
-								element={<div>Analytics Page (Coming Soon)</div>}
-							/>
-							<Route path="/users" element={<div>Users Page (Coming Soon)</div>} />
+							<Route path="/results" element={<div>Results Page (Coming Soon)</div>} />
+							<Route path="/admin" element={<div>Admin Page (Coming Soon)</div>} />
 							<Route path="/settings" element={<Settings />} />
 						</Routes>
 					</main>

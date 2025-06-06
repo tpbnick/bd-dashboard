@@ -28,8 +28,8 @@ export const Sidebar = ({
 
 	const menuItems = [
 		{ icon: HomeIcon, label: "Dashboard", path: "/" },
-		{ icon: ChartBarIcon, label: "Analytics", path: "/analytics" },
-		{ icon: UsersIcon, label: "Users", path: "/users" },
+		{ icon: ChartBarIcon, label: "Results", path: "/results" },
+		{ icon: UsersIcon, label: "Admin", path: "/admin" },
 		{ icon: Cog6ToothIcon, label: "Settings", path: "/settings" },
 	];
 
