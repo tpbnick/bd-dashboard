@@ -76,7 +76,7 @@ export const Settings = () => {
 						Choose your preferred theme for the application.
 					</p>
 
-					<div className="alert alert-info mb-4">
+					<div className="alert alert-success mb-4">
 						<span>
 							Current theme: <strong className="capitalize">{currentTheme}</strong>
 						</span>

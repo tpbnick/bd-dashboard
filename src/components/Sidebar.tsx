@@ -63,7 +63,9 @@ export const Sidebar = ({
 								alt="Bright Defense Logo"
 								className="h-14 w-auto"
 							/>
-							<h1 className="text-lg text-white whitespace-nowrap">bright defense</h1>
+							<h1 className="text-lg text-base-content whitespace-nowrap">
+								bright defense
+							</h1>
 						</div>
 
 						<div className="flex items-center space-x-2">
@@ -82,7 +84,7 @@ export const Sidebar = ({
 				)}
 			</div>
 
-			{/* Navigation Links */}
+			{/* Navigation */}
 			<nav className={`${isCollapsed ? "p-2" : "p-4"}`}>
 				<ul className="space-y-2">
 					{menuItems.map((item, index) => (
@@ -95,24 +97,22 @@ export const Sidebar = ({
 								? "bg-primary text-primary-content"
 								: "hover:bg-base-200"
 						}
+						flex items-center rounded-lg transition-all duration-300
 						${
 							isCollapsed
-								? "tooltip tooltip-right flex items-center justify-center w-12 h-12 rounded-lg mx-auto"
-								: "flex items-center px-4 py-3 rounded-lg"
+								? "tooltip tooltip-right justify-center w-12 h-12 mx-auto"
+								: "px-4 py-3"
 						}
-						transition-all duration-300
 					`}
 								data-tip={isCollapsed ? item.label : undefined}
 								onClick={() => onClose()}
 							>
 								<item.icon className="h-6 w-6 flex-shrink-0" />
-								<span
-									className={`ml-3 whitespace-nowrap transition-all duration-300 ${
-										isCollapsed ? "w-0 opacity-0 overflow-hidden" : "w-auto opacity-100"
-									}`}
-								>
-									{item.label}
-								</span>
+								{!isCollapsed && (
+									<span className="ml-3 whitespace-nowrap transition-opacity duration-300">
+										{item.label}
+									</span>
+								)}
 							</Link>
 						</li>
 					))}

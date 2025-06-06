@@ -13,22 +13,22 @@ export const Dashboard = () => {
 				<div className="stat bg-base-100 rounded-lg shadow">
 					<div className="stat-title">Total Users</div>
 					<div className="stat-value text-primary">1,234</div>
-					<div className="stat-desc">↗︎ 400 (22%)</div>
+					<div className="stat-desc">↗︎ 30 (2%)</div>
 				</div>
 				<div className="stat bg-base-100 rounded-lg shadow">
 					<div className="stat-title">Active Sessions</div>
-					<div className="stat-value text-secondary">89</div>
-					<div className="stat-desc">↗︎ 90 (14%)</div>
+					<div className="stat-value text-secondary">10</div>
+					<div className="stat-desc">↗︎ 1 (10%)</div>
 				</div>
 				<div className="stat bg-base-100 rounded-lg shadow">
-					<div className="stat-title">Revenue</div>
-					<div className="stat-value">$12,345</div>
-					<div className="stat-desc">↘︎ 90 (14%)</div>
+					<div className="stat-title">Reports Generated</div>
+					<div className="stat-value">12</div>
+					<div className="stat-desc">↗︎ 1 (14%)</div>
 				</div>
 				<div className="stat bg-base-100 rounded-lg shadow">
-					<div className="stat-title">Conversion Rate</div>
-					<div className="stat-value text-accent">3.2%</div>
-					<div className="stat-desc">↗︎ 40 (2%)</div>
+					<div className="stat-title">Analytics Available</div>
+					<div className="stat-value text-accent">8</div>
+					<div className="stat-desc">↗︎ 2 (25%)</div>
 				</div>
 			</div>
 
@@ -42,10 +42,10 @@ export const Dashboard = () => {
 								<span>New user registered: john.doe@example.com</span>
 							</div>
 							<div className="alert alert-success">
-								<span>Payment processed: $299.99</span>
+								<span>Scan results for Company X completed</span>
 							</div>
 							<div className="alert alert-warning">
-								<span>Server maintenance scheduled</span>
+								<span>Error pulling scan results</span>
 							</div>
 						</div>
 					</div>
@@ -57,7 +57,7 @@ export const Dashboard = () => {
 						<div className="grid grid-cols-2 gap-4">
 							<button className="btn btn-primary">Add User</button>
 							<button className="btn btn-secondary">Generate Report</button>
-							<button className="btn btn-accent">Send Newsletter</button>
+							<button className="btn btn-accent">Run Scan</button>
 							<button className="btn btn-outline">View Analytics</button>
 						</div>
 					</div>
