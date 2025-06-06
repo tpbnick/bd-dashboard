@@ -43,11 +43,7 @@ export const Sidebar = ({
 			<div className="flex items-center shadow-sm border-b border-base-300 px-4 py-4 h-[73px]">
 				{isCollapsed ? (
 					<div className="flex items-center justify-between w-full">
-						<img
-							src="/src/assets/images/bd.png"
-							alt="Bright Defense Logo"
-							className="h-14 w-auto"
-						/>
+						<img src={bdLogo} alt="Bright Defense Logo" className="h-14 w-auto" />
 						<button
 							className="btn btn-ghost btn-sm hidden lg:flex"
 							onClick={onToggleCollapse}
