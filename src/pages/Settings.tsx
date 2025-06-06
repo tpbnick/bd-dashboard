@@ -1,62 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
 	ArrowTopRightOnSquareIcon,
 	ChevronDownIcon,
 	ChevronUpIcon,
 } from "@heroicons/react/24/outline";
-
-interface Theme {
-	name: string;
-	colors: {
-		primary: string;
-		secondary: string;
-		accent: string;
-	};
-}
-
-const THEMES: Theme[] = [
-	"light",
-	"dark",
-	"cupcake",
-	"bumblebee",
-	"emerald",
-	"corporate",
-	"synthwave",
-	"retro",
-	"cyberpunk",
-	"valentine",
-	"halloween",
-	"garden",
-	"forest",
-	"aqua",
-	"lofi",
-	"pastel",
-	"fantasy",
-	"wireframe",
-	"black",
-	"luxury",
-	"dracula",
-	"cmyk",
-	"autumn",
-	"business",
-	"acid",
-	"lemonade",
-	"night",
-	"coffee",
-	"winter",
-].map(name => ({
-	name,
-	colors: {
-		primary: "bg-primary",
-		secondary: "bg-secondary",
-		accent: "bg-accent",
-	},
-}));
+import { useTheme } from "../context/ThemeContext";
+import { THEMES } from "../constants/themes";
+import type { Theme } from "../constants/themes";
 
 interface ThemePreviewProps {
 	theme: Theme;
 	isSelected: boolean;
-	onSelect: (theme: string) => void;
+	onSelect: (theme: Theme) => void;
 }
 
 const ThemePreview = ({ theme, isSelected, onSelect }: ThemePreviewProps) => {
@@ -67,17 +22,17 @@ const ThemePreview = ({ theme, isSelected, onSelect }: ThemePreviewProps) => {
 					? "border-primary shadow-lg"
 					: "border-base-300 hover:border-base-content/20"
 			}`}
-			onClick={() => onSelect(theme.name)}
-			data-theme={theme.name}
+			onClick={() => onSelect(theme)}
+			data-theme={theme}
 			role="button"
 			aria-pressed={isSelected}
-			aria-label={`Select ${theme.name} theme`}
+			aria-label={`Select ${theme} theme`}
 		>
 			<div className="space-y-2">
 				<div className="flex space-x-1">
-					<div className={`w-3 h-3 rounded ${theme.colors.primary}`} aria-hidden="true" />
-					<div className={`w-3 h-3 rounded ${theme.colors.secondary}`} aria-hidden="true" />
-					<div className={`w-3 h-3 rounded ${theme.colors.accent}`} aria-hidden="true" />
+					<div className="w-3 h-3 rounded bg-primary" aria-hidden="true" />
+					<div className="w-3 h-3 rounded bg-secondary" aria-hidden="true" />
+					<div className="w-3 h-3 rounded bg-accent" aria-hidden="true" />
 				</div>
 				<div className="space-y-1">
 					<div className="h-2 bg-base-content/20 rounded" aria-hidden="true" />
@@ -86,7 +41,7 @@ const ThemePreview = ({ theme, isSelected, onSelect }: ThemePreviewProps) => {
 			</div>
 
 			<p className="text-xs font-medium mt-2 capitalize text-center">
-				{theme.name}
+				{theme}
 			</p>
 
 			{isSelected && (
@@ -111,19 +66,8 @@ const SystemInfoItem = ({ label, value }: SystemInfoItemProps) => (
 );
 
 export const Settings = () => {
-	const [currentTheme, setCurrentTheme] = useState(() => {
-		return localStorage.getItem("theme") || "dark";
-	});
+	const { theme, setTheme } = useTheme();
 	const [isThemeGridOpen, setIsThemeGridOpen] = useState(false);
-
-	useEffect(() => {
-		document.documentElement.setAttribute("data-theme", currentTheme);
-		localStorage.setItem("theme", currentTheme);
-	}, [currentTheme]);
-
-	const handleThemeChange = (theme: string) => {
-		setCurrentTheme(theme);
-	};
 
 	const formatDate = (dateString: string) => {
 		try {
@@ -151,7 +95,7 @@ export const Settings = () => {
 
 					<div className="alert alert-success mb-4">
 						<span>
-							Current theme: <strong className="capitalize">{currentTheme}</strong>
+							Current theme: <strong className="capitalize">{theme}</strong>
 						</span>
 					</div>
 
@@ -172,12 +116,12 @@ export const Settings = () => {
 						</div>
 						<div className="collapse-content">
 							<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 pt-4">
-								{THEMES.map((theme) => (
+								{THEMES.map((themeName) => (
 									<ThemePreview
-										key={theme.name}
-										theme={theme}
-										isSelected={currentTheme === theme.name}
-										onSelect={handleThemeChange}
+										key={themeName}
+										theme={themeName}
+										isSelected={theme === themeName}
+										onSelect={setTheme}
 									/>
 								))}
 							</div>
