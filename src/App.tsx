@@ -16,7 +16,7 @@ function App() {
 	}, []);
 
 	return (
-		<Router>
+		<Router basename="/bd-dashboard">
 			<div className="min-h-screen bg-base-200 flex">
 				{/* Mobile sidebar backdrop */}
 				{sidebarOpen && (
