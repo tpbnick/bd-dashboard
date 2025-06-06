@@ -4,6 +4,7 @@ import { Sidebar } from "./components/Sidebar";
 import { Header } from "./components/Header";
 import { Dashboard } from "./pages/Dashboard";
 import { Settings } from "./pages/Settings";
+import { Admin } from "./pages/Admin";
 
 function App() {
 	const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -42,7 +43,7 @@ function App() {
 								path="/analytics"
 								element={<div>Analytics Page (Coming Soon)</div>}
 							/>
-							<Route path="/admin" element={<div>Admin Page (Coming Soon)</div>} />
+							<Route path="/admin" element={<Admin />} />
 							<Route path="/settings" element={<Settings />} />
 						</Routes>
 					</main>
