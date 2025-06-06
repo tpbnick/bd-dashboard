@@ -1,7 +1,7 @@
 import {
 	XMarkIcon,
-	ChevronLeftIcon,
-	ChevronRightIcon,
+	ChevronDoubleLeftIcon,
+	ChevronDoubleRightIcon,
 } from "@heroicons/react/24/outline";
 import {
 	HomeIcon,
@@ -28,23 +28,18 @@ export const Sidebar = ({
 
 	const menuItems = [
 		{ icon: HomeIcon, label: "Dashboard", path: "/" },
-		{ icon: ChartBarIcon, label: "Results", path: "/results" },
+		{ icon: ChartBarIcon, label: "Analytics", path: "/analytics" },
 		{ icon: UsersIcon, label: "Admin", path: "/admin" },
 		{ icon: Cog6ToothIcon, label: "Settings", path: "/settings" },
 	];
 
 	return (
 		<div
-			className={`fixed inset-y-0 left-0 z-50 bg-base-100 shadow-lg transform transition-all duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${
+			className={`fixed inset-y-0 left-0 z-50 bg-base-100 shadow-sm transform transition-all duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${
 				isOpen ? "translate-x-0" : "-translate-x-full"
 			} ${isCollapsed ? "lg:w-16" : "lg:w-64"} w-64`}
 		>
-			{/* Header with logo */}
-			<div
-				className={`flex items-center border-b border-base-300 p-4 ${
-					isCollapsed ? "justify-center" : "justify-between"
-				}`}
-			>
+			<div className="flex items-center justify-between shadow-sm border-b border-base-300 px-4 py-4 h-[73px]">
 				<div className="flex items-center space-x-3">
 					{/* React Logo - always visible */}
 					<div className="w-8 h-8 flex-shrink-0">
@@ -64,32 +59,23 @@ export const Sidebar = ({
 					{!isCollapsed && <h1 className="text-xl font-bold">Company</h1>}
 				</div>
 
-				{!isCollapsed && (
-					<>
-						{/* Mobile close button */}
-						<button className="btn btn-ghost btn-sm lg:hidden" onClick={onClose}>
-							<XMarkIcon className="h-6 w-6" />
-						</button>
+				{/* Mobile close button */}
+				<button className="btn btn-ghost btn-sm lg:hidden" onClick={onClose}>
+					<XMarkIcon className="h-6 w-6" />
+				</button>
 
-						{/* Desktop collapse button */}
-						<button
-							className="btn btn-ghost btn-sm hidden lg:flex"
-							onClick={onToggleCollapse}
-						>
-							<ChevronLeftIcon className="h-6 w-6" />
-						</button>
-					</>
-				)}
-
-				{/* Collapse button when collapsed */}
-				{isCollapsed && (
-					<button
-						className="btn btn-ghost btn-sm hidden lg:flex absolute top-4 right-2"
-						onClick={onToggleCollapse}
-					>
-						<ChevronRightIcon className="h-6 w-6" />
-					</button>
-				)}
+				{/* Desktop collapse button - always visible */}
+				<button
+					className="btn btn-ghost btn-sm hidden lg:flex"
+					onClick={onToggleCollapse}
+					title={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+				>
+					{isCollapsed ? (
+						<ChevronDoubleRightIcon className="h-5 w-5" />
+					) : (
+						<ChevronDoubleLeftIcon className="h-5 w-5" />
+					)}
+				</button>
 			</div>
 
 			{/* Navigation */}
@@ -113,7 +99,7 @@ export const Sidebar = ({
                   transition-colors duration-200
                 `}
 								data-tip={isCollapsed ? item.label : undefined}
-								onClick={() => onClose()} // Close mobile sidebar on navigation
+								onClick={() => onClose()}
 							>
 								<item.icon className="h-6 w-6" />
 								{!isCollapsed && <span className="ml-3">{item.label}</span>}

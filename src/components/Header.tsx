@@ -7,7 +7,7 @@ interface HeaderProps {
 export const Header = ({ onMenuClick }: HeaderProps) => {
 	return (
 		<header className="bg-base-100 shadow-sm border-b border-base-300 sticky top-0 z-30">
-			<div className="flex items-center justify-between p-4">
+			<div className="flex items-center justify-between px-4 py-4 h-[73px]">
 				<button className="btn btn-ghost btn-sm lg:hidden" onClick={onMenuClick}>
 					<Bars3Icon className="h-6 w-6" />
 				</button>
