@@ -5,6 +5,7 @@ import { Header } from "./components/Header";
 import { Dashboard } from "./pages/Dashboard";
 import { Settings } from "./pages/Settings";
 import { Admin } from "./pages/Admin";
+import { Reports } from "./pages/Reports";
 
 function App() {
 	const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -39,10 +40,7 @@ function App() {
 					<main className="flex-1 p-6 overflow-auto">
 						<Routes>
 							<Route path="/" element={<Dashboard />} />
-							<Route
-								path="/analytics"
-								element={<div>Analytics Page (Coming Soon)</div>}
-							/>
+							<Route path="/reports" element={<Reports />} />
 							<Route path="/admin" element={<Admin />} />
 							<Route path="/settings" element={<Settings />} />
 						</Routes>

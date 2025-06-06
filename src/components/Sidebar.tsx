@@ -25,7 +25,7 @@ interface MenuItem {
 
 const MENU_ITEMS: MenuItem[] = [
 	{ icon: HomeIcon, label: "Dashboard", path: "/" },
-	{ icon: ChartBarIcon, label: "Analytics", path: "/analytics" },
+	{ icon: ChartBarIcon, label: "Reports", path: "/reports" },
 	{ icon: UsersIcon, label: "Admin", path: "/admin" },
 	{ icon: Cog6ToothIcon, label: "Settings", path: "/settings" },
 ];
@@ -77,7 +77,7 @@ export const Sidebar = ({
 
 	return (
 		<div className={sidebarClasses}>
-			<div className="flex items-center shadow-sm border-b border-base-300 px-4 py-4 h-[73px]">
+			<div className="flex items-center px-4 py-4 h-[73px] border-b border-base-300">
 				{isCollapsed ? (
 					<div className="flex items-center justify-between w-full">
 						<img src={bdLogo} alt="Bright Defense Logo" className="h-14 w-auto" />
@@ -120,20 +120,22 @@ export const Sidebar = ({
 				)}
 			</div>
 
-			<nav className={`${isCollapsed ? "p-2" : "p-4"}`}>
-				<ul className="space-y-2">
-					{MENU_ITEMS.map((item, index) => (
-						<li key={index}>
-							<MenuItem
-								item={item}
-								isActive={location.pathname === item.path}
-								isCollapsed={isCollapsed}
-								onClose={onClose}
-							/>
-						</li>
-					))}
-				</ul>
-			</nav>
+			<div className="h-full border-r border-base-300">
+				<nav className={`${isCollapsed ? "p-2" : "p-4"} h-full`}>
+					<ul className="space-y-2">
+						{MENU_ITEMS.map((item, index) => (
+							<li key={index}>
+								<MenuItem
+									item={item}
+									isActive={location.pathname === item.path}
+									isCollapsed={isCollapsed}
+									onClose={onClose}
+								/>
+							</li>
+						))}
+					</ul>
+				</nav>
+			</div>
 		</div>
 	);
 };

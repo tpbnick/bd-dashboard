@@ -58,7 +58,11 @@ const typeColors = {
 	analysis: "badge-accent",
 };
 
-export const ReportViewer = () => {
+interface ReportViewerProps {
+	mode?: "default" | "download-only";
+}
+
+export const ReportViewer = ({ mode = "default" }: ReportViewerProps) => {
 	const [selectedType, setSelectedType] = useState<string>("all");
 	const [selectedStatus, setSelectedStatus] = useState<string>("all");
 
@@ -118,13 +122,15 @@ export const ReportViewer = () => {
 									{new Date(report.date).toLocaleString()} • {report.size}
 								</div>
 								<div className="card-actions justify-end mt-4">
-									<button
-										className="btn btn-ghost btn-sm"
-										title="View Report"
-										aria-label="View Report"
-									>
-										<DocumentMagnifyingGlassIcon className="h-4 w-4" aria-hidden="true" />
-									</button>
+									{mode !== "download-only" && (
+										<button
+											className="btn btn-ghost btn-sm"
+											title="View Report"
+											aria-label="View Report"
+										>
+											<DocumentMagnifyingGlassIcon className="h-4 w-4" aria-hidden="true" />
+										</button>
+									)}
 									<button
 										className="btn btn-ghost btn-sm"
 										title="Download Report"
@@ -132,13 +138,15 @@ export const ReportViewer = () => {
 									>
 										<DocumentArrowDownIcon className="h-4 w-4" aria-hidden="true" />
 									</button>
-									<button
-										className="btn btn-ghost btn-sm text-error"
-										title="Delete Report"
-										aria-label="Delete Report"
-									>
-										<TrashIcon className="h-4 w-4" aria-hidden="true" />
-									</button>
+									{mode !== "download-only" && (
+										<button
+											className="btn btn-ghost btn-sm text-error"
+											title="Delete Report"
+											aria-label="Delete Report"
+										>
+											<TrashIcon className="h-4 w-4" aria-hidden="true" />
+										</button>
+									)}
 								</div>
 							</div>
 						</div>
