@@ -16,15 +16,15 @@ export const Admin = () => {
 				</p>
 			</div>
 
-			<div className="tabs tabs-boxed">
+			<div className="tabs tabs-boxed bg-base-200 p-1 rounded-lg w-fit">
 				<button
-					className={`tab ${activeTab === "users" ? "tab-active" : ""}`}
+					className={`tab flex-1 transition-colors duration-200 ${activeTab === "users" ? "tab-active bg-primary text-primary-content" : "bg-base-100 text-base-content hover:bg-base-300"}`}
 					onClick={() => setActiveTab("users")}
 				>
 					Users
 				</button>
 				<button
-					className={`tab ${activeTab === "reports" ? "tab-active" : ""}`}
+					className={`tab flex-1 transition-colors duration-200 ${activeTab === "reports" ? "tab-active bg-primary text-primary-content" : "bg-base-100 text-base-content hover:bg-base-300"}`}
 					onClick={() => setActiveTab("reports")}
 				>
 					Reports

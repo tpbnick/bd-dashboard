@@ -59,25 +59,25 @@ export const UserViewer = () => {
 	return (
 		<div className="card bg-base-100 shadow-xl">
 			<div className="card-body">
-				<div className="flex justify-between items-center mb-4">
+				<div className="flex flex-col md:flex-row md:justify-between md:items-center gap-2 mb-4">
 					<h3 className="card-title">Users</h3>
-					<div className="flex gap-2">
-						<div className="form-control">
-							<div className="input-group">
-								<input
-									type="text"
-									placeholder="Search users..."
-									className="input input-bordered"
-									value={searchQuery}
-									onChange={(e) => setSearchQuery(e.target.value)}
-								/>
-								<button className="btn btn-square">
+					<div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
+						<div className="relative w-full">
+							<input
+								type="text"
+								placeholder="Search users..."
+								className="input input-bordered w-full pr-10"
+								value={searchQuery}
+								onChange={(e) => setSearchQuery(e.target.value)}
+							/>
+							{!searchQuery && (
+								<span className="absolute right-3 top-1/2 -translate-y-1/2 text-base-content/50 pointer-events-none">
 									<MagnifyingGlassIcon className="h-5 w-5" aria-hidden="true" />
-								</button>
-							</div>
+								</span>
+							)}
 						</div>
 						<select
-							className="select select-bordered"
+							className="select select-bordered w-full sm:w-auto"
 							value={selectedRole}
 							onChange={(e) => setSelectedRole(e.target.value)}
 						>
@@ -89,7 +89,7 @@ export const UserViewer = () => {
 				</div>
 
 				<div className="overflow-x-auto">
-					<table className="table table-zebra">
+					<table className="table table-zebra min-w-full">
 						<thead>
 							<tr>
 								<th>Name</th>
@@ -126,11 +126,11 @@ export const UserViewer = () => {
 					</table>
 				</div>
 
-				<div className="flex justify-between items-center mt-4">
+				<div className="flex flex-col md:flex-row md:justify-between md:items-center gap-2 mt-4">
 					<div className="text-sm text-base-content/70">
 						Showing {filteredUsers.length} of {MOCK_USERS.length} users
 					</div>
-					<div className="join">
+					<div className="join self-start md:self-auto">
 						<button className="join-item btn btn-sm">«</button>
 						<button className="join-item btn btn-sm">1</button>
 						<button className="join-item btn btn-sm">2</button>

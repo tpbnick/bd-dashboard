@@ -71,11 +71,12 @@ export const ReportViewer = () => {
 	return (
 		<div className="card bg-base-100 shadow-xl">
 			<div className="card-body">
-				<div className="flex justify-between items-center mb-4">
+				{/* Controls: Stack vertically on mobile, row on md+ */}
+				<div className="flex flex-col md:flex-row md:justify-between md:items-center gap-2 mb-4">
 					<h3 className="card-title">Reports</h3>
-					<div className="flex gap-2">
+					<div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
 						<select
-							className="select select-bordered"
+							className="select select-bordered w-full sm:w-auto"
 							value={selectedType}
 							onChange={(e) => setSelectedType(e.target.value)}
 						>
@@ -85,7 +86,7 @@ export const ReportViewer = () => {
 							<option value="analysis">Analysis</option>
 						</select>
 						<select
-							className="select select-bordered"
+							className="select select-bordered w-full sm:w-auto"
 							value={selectedStatus}
 							onChange={(e) => setSelectedStatus(e.target.value)}
 						>
@@ -144,11 +145,12 @@ export const ReportViewer = () => {
 					))}
 				</div>
 
-				<div className="flex justify-between items-center mt-4">
+				{/* Pagination/info: Stack vertically on mobile, row on md+ */}
+				<div className="flex flex-col md:flex-row md:justify-between md:items-center gap-2 mt-4">
 					<div className="text-sm text-base-content/70">
 						Showing {filteredReports.length} of {MOCK_REPORTS.length} reports
 					</div>
-					<div className="join">
+					<div className="join self-start md:self-auto">
 						<button className="join-item btn btn-sm">«</button>
 						<button className="join-item btn btn-sm">1</button>
 						<button className="join-item btn btn-sm">2</button>
