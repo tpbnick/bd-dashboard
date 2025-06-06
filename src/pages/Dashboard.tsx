@@ -2,7 +2,7 @@ export const Dashboard = () => {
 	return (
 		<>
 			<div className="mb-6">
-				<h2 className="text-2xl font-bold mb-2">Welcome to Your Dashboard</h2>
+				<h2 className="text-2xl font-bold mb-2">Welcome to BD Dashboard</h2>
 				<p className="text-base-content/70">
 					Here's what's happening with your application today.
 				</p>
