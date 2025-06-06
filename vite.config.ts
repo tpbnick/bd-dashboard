@@ -6,6 +6,7 @@ const gitInfo = gitCommitInfo()
 
 export default defineConfig({
   plugins: [react()],
+  base: '/bd-dashboard/',
   define: {
     __GIT_COMMIT_HASH__: JSON.stringify(gitInfo?.shortHash || 'unknown'),
     __GIT_COMMIT_DATE__: JSON.stringify(gitInfo?.date || new Date().toISOString()),

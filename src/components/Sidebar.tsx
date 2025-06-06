@@ -10,6 +10,7 @@ import {
 	Cog6ToothIcon,
 } from "@heroicons/react/24/outline";
 import { useLocation, Link } from "react-router-dom";
+import bdLogo from "/src/assets/images/bd.png";
 
 interface SidebarProps {
 	isOpen: boolean;
@@ -58,11 +59,7 @@ export const Sidebar = ({
 				) : (
 					<>
 						<div className="flex items-center space-x-3">
-							<img
-								src="/src/assets/images/bd.png"
-								alt="Bright Defense Logo"
-								className="h-14 w-auto"
-							/>
+							<img src={bdLogo} alt="Bright Defense Logo" className="h-14 w-auto" />
 							<h1 className="text-lg text-base-content whitespace-nowrap">
 								bright defense
 							</h1>
